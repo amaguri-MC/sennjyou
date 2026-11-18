@@ -1,0 +1,218 @@
+Compiled from "BlockStateResolver.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.BlockStateResolver$Context {
+  public abstract net.minecraft.world.level.block.Block block();
+  public abstract void setModel(net.minecraft.world.level.block.state.BlockState, net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot);
+}
+Compiled from "BlockStateResolver.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.BlockStateResolver {
+  public abstract void resolveBlockStates(net.fabricmc.fabric.api.client.model.loading.v1.BlockStateResolver$Context);
+}
+Compiled from "CompositeBlockStateModel.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.CompositeBlockStateModel$Unbaked extends net.fabricmc.fabric.api.client.model.loading.v1.CustomUnbakedBlockStateModel {
+  public static net.fabricmc.fabric.api.client.model.loading.v1.CompositeBlockStateModel$Unbaked of(java.util.List<net.minecraft.client.renderer.block.dispatch.BlockStateModel$Unbaked>);
+  public abstract java.util.List<net.minecraft.client.renderer.block.dispatch.BlockStateModel$Unbaked> models();
+}
+Compiled from "CompositeBlockStateModel.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.CompositeBlockStateModel extends net.minecraft.client.renderer.block.dispatch.BlockStateModel {
+  public static net.fabricmc.fabric.api.client.model.loading.v1.CompositeBlockStateModel of(java.util.List<net.minecraft.client.renderer.block.dispatch.BlockStateModel>);
+  public abstract java.util.List<net.minecraft.client.renderer.block.dispatch.BlockStateModel> models();
+}
+Compiled from "CustomUnbakedBlockStateModel.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.CustomUnbakedBlockStateModel extends net.minecraft.client.renderer.block.dispatch.BlockStateModel$Unbaked {
+  public static void register(net.minecraft.resources.Identifier, com.mojang.serialization.MapCodec<? extends net.fabricmc.fabric.api.client.model.loading.v1.CustomUnbakedBlockStateModel>);
+  public abstract com.mojang.serialization.MapCodec<? extends net.fabricmc.fabric.api.client.model.loading.v1.CustomUnbakedBlockStateModel> codec();
+}
+Compiled from "ExtraModelKey.java"
+public final class net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey<T> {
+  private final java.util.function.Supplier<java.lang.String> name;
+  private net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey(java.util.function.Supplier<java.lang.String>);
+  public static <T> net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey<T> create();
+  public static <T> net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey<T> create(java.util.function.Supplier<java.lang.String>);
+  public java.lang.String toString();
+  private static java.lang.String lambda$create$0();
+}
+Compiled from "FabricModelManager.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.FabricModelManager {
+  public default <T> T getModel(net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey<T>);
+}
+Compiled from "ModelLoadingPlugin.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin$Context {
+  public abstract void registerBlockStateResolver(net.minecraft.world.level.block.Block, net.fabricmc.fabric.api.client.model.loading.v1.BlockStateResolver);
+  public abstract <T> void addModel(net.fabricmc.fabric.api.client.model.loading.v1.ExtraModelKey<T>, net.fabricmc.fabric.api.client.model.loading.v1.UnbakedExtraModel<T>);
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoad> modifyModelOnLoad();
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoadBlock> modifyBlockModelOnLoad();
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeBlock> modifyBlockModelBeforeBake();
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeBlock> modifyBlockModelAfterBake();
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeItem> modifyItemModelBeforeBake();
+  public abstract net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeItem> modifyItemModelAfterBake();
+}
+Compiled from "ModelLoadingPlugin.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin {
+  public static void register(net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin);
+  public static java.util.List<net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin> getAll();
+  public abstract void initialize(net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeBlock$Context {
+  public abstract net.minecraft.world.level.block.state.BlockState state();
+  public abstract net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot sourceModel();
+  public abstract net.minecraft.client.resources.model.ModelBaker baker();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeBlock {
+  public abstract net.minecraft.client.renderer.block.dispatch.BlockStateModel modifyModelAfterBake(net.minecraft.client.renderer.block.dispatch.BlockStateModel, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeBlock$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeItem$Context {
+  public abstract net.minecraft.resources.Identifier itemId();
+  public abstract net.minecraft.client.renderer.item.ItemModel$Unbaked sourceModel();
+  public abstract net.minecraft.client.renderer.item.ItemModel$BakingContext bakingContext();
+  public abstract org.joml.Matrix4fc transformation();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeItem {
+  public abstract net.minecraft.client.renderer.item.ItemModel modifyModelAfterBake(net.minecraft.client.renderer.item.ItemModel, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$AfterBakeItem$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeBlock$Context {
+  public abstract net.minecraft.world.level.block.state.BlockState state();
+  public abstract net.minecraft.client.resources.model.ModelBaker baker();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeBlock {
+  public abstract net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot modifyModelBeforeBake(net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeBlock$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeItem$Context {
+  public abstract net.minecraft.resources.Identifier itemId();
+  public abstract net.minecraft.client.renderer.item.ItemModel$BakingContext bakingContext();
+  public abstract org.joml.Matrix4fc transformation();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeItem {
+  public abstract net.minecraft.client.renderer.item.ItemModel$Unbaked modifyModelBeforeBake(net.minecraft.client.renderer.item.ItemModel$Unbaked, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$BeforeBakeItem$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoad$Context {
+  public abstract net.minecraft.resources.Identifier id();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoad {
+  public abstract net.minecraft.client.resources.model.UnbakedModel modifyModelOnLoad(net.minecraft.client.resources.model.UnbakedModel, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoad$Context);
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoadBlock$Context {
+  public abstract net.minecraft.world.level.block.state.BlockState state();
+}
+Compiled from "ModelModifier.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoadBlock {
+  public abstract net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot modifyModelOnLoad(net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot, net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier$OnLoadBlock$Context);
+}
+Compiled from "ModelModifier.java"
+public final class net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier {
+  public static final net.minecraft.resources.Identifier OVERRIDE_PHASE;
+  public static final net.minecraft.resources.Identifier DEFAULT_PHASE;
+  public static final net.minecraft.resources.Identifier WRAP_PHASE;
+  public static final net.minecraft.resources.Identifier WRAP_LAST_PHASE;
+  private net.fabricmc.fabric.api.client.model.loading.v1.ModelModifier();
+  static {};
+}
+Compiled from "PreparableModelLoadingPlugin.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin$DataLoader<T> {
+  public abstract java.util.concurrent.CompletableFuture<T> load(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor);
+}
+Compiled from "PreparableModelLoadingPlugin.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin$Holder<T> {
+  public abstract net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin$DataLoader<T> loader();
+  public abstract net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin<T> plugin();
+}
+Compiled from "PreparableModelLoadingPlugin.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin<T> {
+  public static <T> void register(net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin$DataLoader<T>, net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin<T>);
+  public static java.util.List<net.fabricmc.fabric.api.client.model.loading.v1.PreparableModelLoadingPlugin$Holder<?>> getAll();
+  public abstract void initialize(T, net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin$Context);
+}
+Compiled from "SimpleUnbakedExtraModel.java"
+public final class net.fabricmc.fabric.api.client.model.loading.v1.SimpleUnbakedExtraModel<T> implements net.fabricmc.fabric.api.client.model.loading.v1.UnbakedExtraModel<T> {
+  private static final org.slf4j.Logger LOGGER;
+  private final net.minecraft.resources.Identifier model;
+  private final java.util.function.BiFunction<net.minecraft.client.resources.model.ResolvedModel, net.minecraft.client.resources.model.ModelBaker, T> bake;
+  public net.fabricmc.fabric.api.client.model.loading.v1.SimpleUnbakedExtraModel(net.minecraft.resources.Identifier, java.util.function.BiFunction<net.minecraft.client.resources.model.ResolvedModel, net.minecraft.client.resources.model.ModelBaker, T>);
+  public static net.fabricmc.fabric.api.client.model.loading.v1.SimpleUnbakedExtraModel<net.minecraft.client.renderer.block.dispatch.BlockStateModel> blockStateModel(net.minecraft.resources.Identifier);
+  public static net.fabricmc.fabric.api.client.model.loading.v1.SimpleUnbakedExtraModel<net.minecraft.client.renderer.block.dispatch.BlockStateModel> blockStateModel(net.minecraft.resources.Identifier, net.minecraft.client.renderer.block.dispatch.ModelState);
+  private static net.minecraft.client.renderer.block.dispatch.BlockStateModelPart bakeResolved(net.minecraft.client.resources.model.ModelBaker, net.minecraft.client.resources.model.ResolvedModel, net.minecraft.client.renderer.block.dispatch.ModelState);
+  public void resolveDependencies(net.minecraft.client.resources.model.ResolvableModel$Resolver);
+  public T bake(net.minecraft.client.resources.model.ModelBaker);
+  private static void lambda$bakeResolved$0(org.apache.commons.lang3.mutable.MutableObject, net.minecraft.client.resources.model.ModelBaker, net.fabricmc.fabric.api.client.renderer.v1.mesh.QuadView);
+  private static net.minecraft.client.renderer.block.dispatch.BlockStateModel lambda$blockStateModel$0(net.minecraft.client.renderer.block.dispatch.ModelState, net.minecraft.client.resources.model.ResolvedModel, net.minecraft.client.resources.model.ModelBaker);
+  static {};
+}
+Compiled from "UnbakedExtraModel.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.UnbakedExtraModel<T> extends net.minecraft.client.resources.model.ResolvableModel {
+  public abstract T bake(net.minecraft.client.resources.model.ModelBaker);
+}
+Compiled from "UnbakedModelDeserializer.java"
+public interface net.fabricmc.fabric.api.client.model.loading.v1.UnbakedModelDeserializer {
+  public static void register(net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.model.loading.v1.UnbakedModelDeserializer);
+  public static net.fabricmc.fabric.api.client.model.loading.v1.UnbakedModelDeserializer get(net.minecraft.resources.Identifier);
+  public static net.minecraft.client.resources.model.UnbakedModel deserialize(java.io.Reader) throws com.google.gson.JsonParseException;
+  public abstract net.minecraft.client.resources.model.UnbakedModel deserialize(com.google.gson.JsonObject, com.google.gson.JsonDeserializationContext);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.model.loading.v1.package-info {
+}
+Compiled from "WrapperBakedItemModel.java"
+public abstract class net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBakedItemModel implements net.minecraft.client.renderer.item.ItemModel {
+  protected net.minecraft.client.renderer.item.ItemModel wrapped;
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBakedItemModel();
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBakedItemModel(net.minecraft.client.renderer.item.ItemModel);
+  public void update(net.minecraft.client.renderer.item.ItemStackRenderState, net.minecraft.world.item.ItemStack, net.minecraft.client.renderer.item.ItemModelResolver, net.minecraft.world.item.ItemDisplayContext, net.minecraft.client.multiplayer.ClientLevel, net.minecraft.world.entity.ItemOwner, int);
+}
+Compiled from "WrapperBlockStateModel.java"
+public abstract class net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBlockStateModel implements net.minecraft.client.renderer.block.dispatch.BlockStateModel {
+  protected net.minecraft.client.renderer.block.dispatch.BlockStateModel wrapped;
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBlockStateModel();
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperBlockStateModel(net.minecraft.client.renderer.block.dispatch.BlockStateModel);
+  public void collectParts(net.minecraft.util.RandomSource, java.util.List<net.minecraft.client.renderer.block.dispatch.BlockStateModelPart>);
+  public net.minecraft.client.resources.model.sprite.Material$Baked particleMaterial();
+  public int materialFlags();
+  public boolean hasMaterialFlag(int);
+  public void emitQuads(net.fabricmc.fabric.api.client.renderer.v1.mesh.QuadEmitter, net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource, java.util.function.Predicate<net.minecraft.core.Direction>);
+  public java.lang.Object createGeometryKey(net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource);
+  public net.minecraft.client.resources.model.sprite.Material$Baked particleMaterial(net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+  public int materialFlags(net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource);
+  public boolean hasMaterialFlag(net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource, int);
+}
+Compiled from "WrapperUnbakedItemModel.java"
+public abstract class net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedItemModel implements net.minecraft.client.renderer.item.ItemModel$Unbaked {
+  protected net.minecraft.client.renderer.item.ItemModel$Unbaked wrapped;
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedItemModel();
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedItemModel(net.minecraft.client.renderer.item.ItemModel$Unbaked);
+  public void resolveDependencies(net.minecraft.client.resources.model.ResolvableModel$Resolver);
+  public com.mojang.serialization.MapCodec<? extends net.minecraft.client.renderer.item.ItemModel$Unbaked> type();
+  public net.minecraft.client.renderer.item.ItemModel bake(net.minecraft.client.renderer.item.ItemModel$BakingContext, org.joml.Matrix4fc);
+}
+Compiled from "WrapperUnbakedModel.java"
+public abstract class net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedModel implements net.minecraft.client.resources.model.UnbakedModel {
+  protected net.minecraft.client.resources.model.UnbakedModel wrapped;
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedModel();
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedModel(net.minecraft.client.resources.model.UnbakedModel);
+  public java.lang.Boolean ambientOcclusion();
+  public net.minecraft.client.resources.model.UnbakedModel$GuiLight guiLight();
+  public net.minecraft.client.resources.model.cuboid.ItemTransforms transforms();
+  public net.minecraft.client.resources.model.sprite.TextureSlots$Data textureSlots();
+  public net.minecraft.client.resources.model.geometry.UnbakedGeometry geometry();
+  public net.minecraft.resources.Identifier parent();
+}
+Compiled from "WrapperUnbakedRootBlockStateModel.java"
+public abstract class net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedRootBlockStateModel implements net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot {
+  protected net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot wrapped;
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedRootBlockStateModel();
+  protected net.fabricmc.fabric.api.client.model.loading.v1.wrapper.WrapperUnbakedRootBlockStateModel(net.minecraft.client.renderer.block.dispatch.BlockStateModel$UnbakedRoot);
+  public net.minecraft.client.renderer.block.dispatch.BlockStateModel bake(net.minecraft.world.level.block.state.BlockState, net.minecraft.client.resources.model.ModelBaker);
+  public java.lang.Object visualEqualityGroup(net.minecraft.world.level.block.state.BlockState);
+  public void resolveDependencies(net.minecraft.client.resources.model.ResolvableModel$Resolver);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.model.loading.v1.wrapper.package-info {
+}

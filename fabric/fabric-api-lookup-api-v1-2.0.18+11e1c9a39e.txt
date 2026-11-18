@@ -1,0 +1,104 @@
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.lookup.v1.package-info {
+}
+Compiled from "BlockApiCache.java"
+public interface net.fabricmc.fabric.api.lookup.v1.block.BlockApiCache<A, C> {
+  public default A find(C);
+  public abstract A find(net.minecraft.world.level.block.state.BlockState, C);
+  public abstract net.minecraft.world.level.block.entity.BlockEntity getBlockEntity();
+  public abstract net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup<A, C> getLookup();
+  public abstract net.minecraft.server.level.ServerLevel getLevel();
+  public abstract net.minecraft.core.BlockPos getPos();
+  public static <A, C> net.fabricmc.fabric.api.lookup.v1.block.BlockApiCache<A, C> create(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup<A, C>, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+}
+Compiled from "BlockApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<A, C> {
+  public abstract A find(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, C);
+}
+Compiled from "BlockApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockEntityApiProvider<A, C> {
+  public abstract A find(net.minecraft.world.level.block.entity.BlockEntity, C);
+}
+Compiled from "BlockApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup<A, C> {
+  public static <A, C> net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup<A, C> get(net.minecraft.resources.Identifier, java.lang.Class<A>, java.lang.Class<C>);
+  public default A find(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, C);
+  public abstract A find(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, C);
+  public abstract void registerSelf(net.minecraft.world.level.block.entity.BlockEntityType<?>...);
+  public abstract void registerForBlocks(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<A, C>, net.minecraft.world.level.block.Block...);
+  public default <T extends net.minecraft.world.level.block.entity.BlockEntity> void registerForBlockEntity(java.util.function.BiFunction<? super T, C, A>, net.minecraft.world.level.block.entity.BlockEntityType<T>);
+  public abstract void registerForBlockEntities(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockEntityApiProvider<A, C>, net.minecraft.world.level.block.entity.BlockEntityType<?>...);
+  public abstract void registerFallback(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<A, C>);
+  public abstract net.minecraft.resources.Identifier getId();
+  public abstract java.lang.Class<A> apiClass();
+  public abstract java.lang.Class<C> contextClass();
+  public abstract net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<A, C> getProvider(net.minecraft.world.level.block.Block);
+  private static java.lang.Object lambda$registerForBlockEntity$0(java.util.function.BiFunction, net.minecraft.world.level.block.entity.BlockEntity, java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.lookup.v1.block.package-info {
+}
+Compiled from "ApiLookupMap.java"
+public interface net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap$LookupConstructor<L> {
+  public abstract L get(net.minecraft.resources.Identifier, java.lang.Class<?>, java.lang.Class<?>);
+}
+Compiled from "ApiLookupMap.java"
+public interface net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap$LookupFactory<L> {
+  public abstract L get(java.lang.Class<?>, java.lang.Class<?>);
+}
+Compiled from "ApiLookupMap.java"
+public interface net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap<L> extends java.lang.Iterable<L> {
+  public static <L> net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap<L> create(net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap$LookupConstructor<L>);
+  public abstract L getLookup(net.minecraft.resources.Identifier, java.lang.Class<?>, java.lang.Class<?>);
+  public static <L> net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap<L> create(net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap$LookupFactory<L>);
+  private static java.lang.Object lambda$create$0(net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap$LookupFactory, net.minecraft.resources.Identifier, java.lang.Class, java.lang.Class);
+}
+Compiled from "ApiProviderMap.java"
+public interface net.fabricmc.fabric.api.lookup.v1.custom.ApiProviderMap<K, V> {
+  public static <K, V> net.fabricmc.fabric.api.lookup.v1.custom.ApiProviderMap<K, V> create();
+  public abstract V get(K);
+  public abstract V putIfAbsent(K, V);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.lookup.v1.custom.package-info {
+}
+Compiled from "EntityApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C> {
+  public abstract A find(net.minecraft.world.entity.Entity, C);
+}
+Compiled from "EntityApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup<A, C> {
+  public static <A, C> net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup<A, C> get(net.minecraft.resources.Identifier, java.lang.Class<A>, java.lang.Class<C>);
+  public abstract A find(net.minecraft.world.entity.Entity, C);
+  public abstract void registerSelf(net.minecraft.world.entity.EntityType<?>...);
+  public default <T extends net.minecraft.world.entity.Entity> void registerForType(java.util.function.BiFunction<T, C, A>, net.minecraft.world.entity.EntityType<T>);
+  public abstract void registerForTypes(net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>, net.minecraft.world.entity.EntityType<?>...);
+  public abstract void registerFallback(net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>);
+  public abstract net.minecraft.resources.Identifier getId();
+  public abstract java.lang.Class<A> apiClass();
+  public abstract java.lang.Class<C> contextClass();
+  public abstract net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C> getProvider(net.minecraft.world.entity.EntityType<?>);
+  private static java.lang.Object lambda$registerForType$0(java.util.function.BiFunction, net.minecraft.world.entity.Entity, java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.lookup.v1.entity.package-info {
+}
+Compiled from "ItemApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup$ItemApiProvider<A, C> {
+  public abstract A find(net.minecraft.world.item.ItemStack, C);
+}
+Compiled from "ItemApiLookup.java"
+public interface net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup<A, C> {
+  public static <A, C> net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup<A, C> get(net.minecraft.resources.Identifier, java.lang.Class<A>, java.lang.Class<C>);
+  public abstract A find(net.minecraft.world.item.ItemStack, C);
+  public abstract void registerSelf(net.minecraft.world.level.ItemLike...);
+  public abstract void registerForItems(net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup$ItemApiProvider<A, C>, net.minecraft.world.level.ItemLike...);
+  public abstract void registerFallback(net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup$ItemApiProvider<A, C>);
+  public abstract net.minecraft.resources.Identifier getId();
+  public abstract java.lang.Class<A> apiClass();
+  public abstract java.lang.Class<C> contextClass();
+  public abstract net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup$ItemApiProvider<A, C> getProvider(net.minecraft.world.item.Item);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.lookup.v1.item.package-info {
+}

@@ -1,0 +1,158 @@
+Compiled from "FabricBlockEntityType.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType {
+  public default void addValidBlock(net.minecraft.world.level.block.Block);
+}
+Compiled from "FabricBlockEntityTypeBuilder.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder$Factory<T extends net.minecraft.world.level.block.entity.BlockEntity> {
+  public abstract T create(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+}
+Compiled from "FabricBlockEntityTypeBuilder.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T extends net.minecraft.world.level.block.entity.BlockEntity> {
+  private final net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder$Factory<? extends T> factory;
+  private final java.util.Set<net.minecraft.world.level.block.Block> blocks;
+  private java.lang.Boolean canPotentiallyExecuteCommands;
+  private net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder(net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder$Factory<? extends T>);
+  public static <T extends net.minecraft.world.level.block.entity.BlockEntity> net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T> create(net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder$Factory<? extends T>, net.minecraft.world.level.block.Block...);
+  public net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T> addBlock(net.minecraft.world.level.block.Block);
+  public net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T> addBlocks(net.minecraft.world.level.block.Block...);
+  public net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T> addBlocks(java.util.Collection<? extends net.minecraft.world.level.block.Block>);
+  public net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder<T> canPotentiallyExecuteCommands(boolean);
+  public net.minecraft.world.level.block.entity.BlockEntityType<T> build();
+  public net.minecraft.world.level.block.entity.BlockEntityType<T> build(com.mojang.datafixers.types.Type<?>);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.object.builder.v1.block.entity.package-info {
+}
+Compiled from "BlockSetTypeBuilder.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder {
+  private boolean openableByHand;
+  private boolean openableByWindCharge;
+  private boolean buttonActivatedByArrows;
+  private net.minecraft.world.level.block.state.properties.BlockSetType$PressurePlateSensitivity pressurePlateActivationRule;
+  private net.minecraft.world.level.block.SoundType soundType;
+  private net.minecraft.sounds.SoundEvent doorCloseSound;
+  private net.minecraft.sounds.SoundEvent doorOpenSound;
+  private net.minecraft.sounds.SoundEvent trapdoorCloseSound;
+  private net.minecraft.sounds.SoundEvent trapdoorOpenSound;
+  private net.minecraft.sounds.SoundEvent pressurePlateClickOffSound;
+  private net.minecraft.sounds.SoundEvent pressurePlateClickOnSound;
+  private net.minecraft.sounds.SoundEvent buttonClickOffSound;
+  private net.minecraft.sounds.SoundEvent buttonClickOnSound;
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder();
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder openableByHand(boolean);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder openableByWindCharge(boolean);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder buttonActivatedByArrows(boolean);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder pressurePlateActivationRule(net.minecraft.world.level.block.state.properties.BlockSetType$PressurePlateSensitivity);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder soundType(net.minecraft.world.level.block.SoundType);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder doorCloseSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder doorOpenSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder trapdoorCloseSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder trapdoorOpenSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder pressurePlateClickOffSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder pressurePlateClickOnSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder buttonClickOffSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder buttonClickOnSound(net.minecraft.sounds.SoundEvent);
+  public static net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder copyOf(net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder);
+  public static net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder copyOf(net.minecraft.world.level.block.state.properties.BlockSetType);
+  public net.minecraft.world.level.block.state.properties.BlockSetType register(net.minecraft.resources.Identifier);
+  public net.minecraft.world.level.block.state.properties.BlockSetType build(net.minecraft.resources.Identifier);
+}
+Compiled from "WoodTypeBuilder.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder {
+  private net.minecraft.world.level.block.SoundType soundType;
+  private net.minecraft.world.level.block.SoundType hangingSignSoundType;
+  private net.minecraft.sounds.SoundEvent fenceGateCloseSound;
+  private net.minecraft.sounds.SoundEvent fenceGateOpenSound;
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder();
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder soundType(net.minecraft.world.level.block.SoundType);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder hangingSignSoundType(net.minecraft.world.level.block.SoundType);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder fenceGateCloseSound(net.minecraft.sounds.SoundEvent);
+  public net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder fenceGateOpenSound(net.minecraft.sounds.SoundEvent);
+  public static net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder copyOf(net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder);
+  public static net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder copyOf(net.minecraft.world.level.block.state.properties.WoodType);
+  public net.minecraft.world.level.block.state.properties.WoodType register(net.minecraft.resources.Identifier, net.minecraft.world.level.block.state.properties.BlockSetType);
+  public net.minecraft.world.level.block.state.properties.WoodType build(net.minecraft.resources.Identifier, net.minecraft.world.level.block.state.properties.BlockSetType);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.object.builder.v1.block.type.package-info {
+}
+Compiled from "FabricDefaultAttributeRegistry.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyConsumer {
+  public abstract void accept(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>, net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder);
+}
+Compiled from "FabricDefaultAttributeRegistry.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyContext {
+  public abstract void modify(java.util.function.Predicate<net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>>, net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyConsumer);
+  public default void modify(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>, net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyConsumer);
+  public default void modify(java.util.Collection<net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>>, net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyConsumer);
+  public default void modifyAll(net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyConsumer);
+  private static boolean lambda$modifyAll$0(net.minecraft.world.entity.EntityType);
+}
+Compiled from "FabricDefaultAttributeRegistry.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyDefaultAttribute {
+  public abstract void modify(net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyContext);
+}
+Compiled from "FabricDefaultAttributeRegistry.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry {
+  private static final org.slf4j.Logger LOGGER;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyDefaultAttribute> MODIFY;
+  private net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry();
+  public static void register(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>, net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder);
+  public static void register(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>, net.minecraft.world.entity.ai.attributes.AttributeSupplier);
+  private static net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyDefaultAttribute lambda$static$0(net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyDefaultAttribute[]);
+  private static void lambda$static$1(net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyDefaultAttribute[], net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry$ModifyContext);
+  static {};
+}
+Compiled from "FabricEntityDataRegistry.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityDataRegistry {
+  private net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityDataRegistry();
+  public static void register(net.minecraft.resources.Identifier, net.minecraft.network.syncher.EntityDataSerializer<?>);
+  public static net.minecraft.network.syncher.EntityDataSerializer<?> get(net.minecraft.resources.Identifier);
+  public static net.minecraft.resources.Identifier getId(net.minecraft.network.syncher.EntityDataSerializer<?>);
+}
+Compiled from "FabricEntityType.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Living<T extends net.minecraft.world.entity.LivingEntity> {
+  public abstract net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Living<T> defaultAttributes(java.util.function.Supplier<net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder>);
+}
+Compiled from "FabricEntityType.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Mob<T extends net.minecraft.world.entity.Mob> extends net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Living<T> {
+  public abstract net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Mob<T> spawnPlacement(net.minecraft.world.entity.SpawnPlacementType, net.minecraft.world.level.levelgen.Heightmap$Types, net.minecraft.world.entity.SpawnPlacements$SpawnPredicate<T>);
+  public abstract net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Mob<T> defaultAttributes(java.util.function.Supplier<net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder>);
+  public default net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Living defaultAttributes(java.util.function.Supplier);
+}
+Compiled from "FabricEntityType.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder<T extends net.minecraft.world.entity.Entity> {
+  public default net.minecraft.world.entity.EntityType$Builder<T> alwaysUpdateVelocity(boolean);
+  public default net.minecraft.world.entity.EntityType$Builder<T> canPotentiallyExecuteCommands(boolean);
+  public static <T extends net.minecraft.world.entity.LivingEntity> net.minecraft.world.entity.EntityType$Builder<T> createLiving(net.minecraft.world.entity.EntityType$EntityFactory<T>, net.minecraft.world.entity.MobCategory, java.util.function.UnaryOperator<net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Living<T>>);
+  public static <T extends net.minecraft.world.entity.Mob> net.minecraft.world.entity.EntityType$Builder<T> createMob(net.minecraft.world.entity.EntityType$EntityFactory<T>, net.minecraft.world.entity.MobCategory, java.util.function.UnaryOperator<net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType$Builder$Mob<T>>);
+}
+Compiled from "FabricEntityType.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType {
+}
+Compiled from "MinecartComparatorLogic.java"
+public interface net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogic<T extends net.minecraft.world.entity.vehicle.minecart.AbstractMinecart> {
+  public abstract int getComparatorValue(T, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos);
+}
+Compiled from "MinecartComparatorLogicRegistry.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogicRegistry {
+  private static final org.slf4j.Logger LOGGER;
+  private static final java.util.Map<net.minecraft.world.entity.EntityType<?>, net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogic<?>> LOGICS;
+  private net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogicRegistry();
+  public static net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogic<net.minecraft.world.entity.vehicle.minecart.AbstractMinecart> getCustomComparatorLogic(net.minecraft.world.entity.EntityType<?>);
+  public static <T extends net.minecraft.world.entity.vehicle.minecart.AbstractMinecart> void register(net.minecraft.world.entity.EntityType<T>, net.fabricmc.fabric.api.object.builder.v1.entity.MinecartComparatorLogic<? super T>);
+  static {};
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.object.builder.v1.entity.package-info {
+}
+Compiled from "PoiHelper.java"
+public final class net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper {
+  private net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper();
+  public static net.minecraft.world.entity.ai.village.poi.PoiType register(net.minecraft.resources.Identifier, int, int, net.minecraft.world.level.block.Block...);
+  public static net.minecraft.world.entity.ai.village.poi.PoiType register(net.minecraft.resources.Identifier, int, int, java.lang.Iterable<net.minecraft.world.level.block.state.BlockState>);
+  private static net.minecraft.world.entity.ai.village.poi.PoiType register(net.minecraft.resources.Identifier, int, int, java.util.Set<net.minecraft.world.level.block.state.BlockState>);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.object.builder.v1.world.poi.package-info {
+}
