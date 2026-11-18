@@ -21,16 +21,16 @@ jobs:
       - name: dump
         shell: bash
         run: |
-          set -x
+          set +e
           find ~/.gradle .gradle -name "*.jar" 2>/dev/null | grep -i -E "minecraft|fabric" | grep -v sources > jars.txt || true
           cat jars.txt | head -100
           mkdir -p out/mc out/fabric out/assets
-          MC=$(grep -E "minecraft-(merged|common|clientOnly|client)[^/]*\.jar$" jars.txt | head -5)
+          MC=$(grep -E "deobf-26.2\.jar$" jars.txt)
           echo "$MC" > out/mcjars.txt
           for J in $MC; do
-            unzip -Z1 "$J" | grep '\.class$' | grep -v '\$[0-9]' | sed 's/\.class$//' | tr / . > cls.txt
+            unzip -Z1 "$J" | grep '\.class$' | grep -v '\$[0-9]' | sed 's/\.class$//' | tr / . > cls.txt || true
             for P in $(sed 's/\.[^.]*$//' cls.txt | sort -u); do
-              grep "^$P\.[^.]*$" cls.txt > pc.txt
+              grep "^$P\.[^.]*$" cls.txt > pc.txt || true
               javap -cp "$J" -p $(cat pc.txt) >> "out/mc/$P.txt" 2>/dev/null || true
             done
             mkdir -p ex && (cd ex && unzip -q -o "$J" 'assets/minecraft/blockstates/*' 'assets/minecraft/models/*' 'assets/minecraft/items/*' 'data/minecraft/recipe/*' 'data/minecraft/tags/block/*' 2>/dev/null || true)
@@ -38,10 +38,10 @@ jobs:
           cp -r ex/* out/assets/ 2>/dev/null || true
           for J in $(grep -i fabric jars.txt | grep -i -E "api|networking|rendering|command|event|item-group|registry|lifecycle|key-binding|attachment|object-builder|gametest|block" | sort -u); do
             N=$(basename "$J" .jar)
-            unzip -Z1 "$J" | grep '\.class$' | grep '/api/' | sed 's/\.class$//' | tr / . > fc.txt
+            unzip -Z1 "$J" | grep '\.class$' | grep '/api/' | sed 's/\.class$//' | tr / . > fc.txt || true
             [ -s fc.txt ] && javap -cp "$J" -p $(cat fc.txt) > "out/fabric/$N.txt" 2>/dev/null || true
           done
-          ls out/mc | wc -l; ls out/fabric | wc -l
+          ls out/mc | wc -l; ls out/fabric | wc -l; exit 0
       - name: publish
         shell: bash
         run: |
