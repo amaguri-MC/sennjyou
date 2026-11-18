@@ -14,13 +14,13 @@ import net.minecraft.world.level.block.state.BlockState;
  * 用語:
  *  - cell: 汚れブロック(senjou:grime)が置かれる空気マスの座標。
  *  - face: そのマスのどの側に貼るか。cell.relative(face) が支えの固体ブロック（その face.getOpposite() 面が丈夫）。
- *  - 汚れ量(amount): LEVEL(1〜3) × 貼られている面の数。クリア率の単位。
+ *  - 汚れ量(amount): LEVEL(1〜4) × 貼られている面の数。クリア率の単位。
  */
 public final class Grime {
 	private Grime() {
 	}
 
-	public static final int MAX_LEVEL = 3;
+	public static final int MAX_LEVEL = 4;
 
 	/** state が senjou:grime なら true。 */
 	public static boolean isGrime(BlockState state) {
@@ -43,7 +43,7 @@ public final class Grime {
 	}
 
 	/**
-	 * cell の face 側に濃さ lvl(1〜3) の汚れを貼る。既に汚れがあれば面を足し、濃さは大きい方。
+	 * cell の face 側に濃さ lvl(1〜4) の汚れを貼る。既に汚れがあれば面を足し、濃さは大きい方。
 	 * 隣への更新は出さない（大量に置くため。setBlock のフラグ 2）。貼れなければ false。
 	 */
 	public static boolean place(ServerLevel level, BlockPos cell, Direction face, int lvl) {

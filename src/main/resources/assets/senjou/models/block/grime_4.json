@@ -1,0 +1,41 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "senjou:block/grime_4",
+    "grime": "senjou:block/grime_4"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0.1
+      ],
+      "to": [
+        16,
+        16,
+        0.1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ],
+          "texture": "#grime"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#grime"
+        }
+      }
+    }
+  ]
+}

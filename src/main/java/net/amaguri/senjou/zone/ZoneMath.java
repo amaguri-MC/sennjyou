@@ -53,10 +53,16 @@ public final class ZoneMath {
 	static final double LEVEL_CUT_2 = 0.5373;
 
 	/**
-	 * マス(x,y,z)の face 側(0..5)に貼る汚れの濃さ。0 なら貼らない。1〜3。
+	 * マス(x,y,z)の face 側(0..5)に貼る汚れの濃さ。今は常に Grime.MAX_LEVEL（全面・隙間なし）。
 	 * 同じ seed・座標なら必ず同じ値。
 	 */
 	public static int levelAt(long seed, int x, int y, int z, int face) {
+		// 汚すときは全面を最大の濃さ（隙間なし）にする。むら版は mottledLevelAt。
+		return net.amaguri.senjou.grime.Grime.MAX_LEVEL;
+	}
+
+	/** 旧仕様: むらのある汚れ（約85%・濃さ1〜3）。今は未使用。 */
+	public static int mottledLevelAt(long seed, int x, int y, int z, int face) {
 		double n = fbm(seed, x / 4.0, y / 4.0, z / 4.0);
 		double h = hash01(seed ^ 0x51ED270BL, x, y * 6 + face, z);
 		double score = 0.62 * n + 0.38 * h;
