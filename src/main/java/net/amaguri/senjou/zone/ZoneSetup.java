@@ -43,7 +43,7 @@ public final class ZoneSetup {
 			if (!level.isClientSide() && player instanceof ServerPlayer sp) {
 				WandSelection.setPos1(sp, pos);
 			}
-			return InteractionResult.FAIL;
+			return InteractionResult.SUCCESS; // FAIL だとクライアントがサーバーへ送らず地点1が設定されない
 		});
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, buildContext, selection) -> ZoneCommands.register(dispatcher));

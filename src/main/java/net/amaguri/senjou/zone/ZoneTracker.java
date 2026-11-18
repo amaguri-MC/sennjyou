@@ -90,8 +90,7 @@ public final class ZoneTracker {
 				break; // 今tickの分を使い切った。続きは次のtick。
 			}
 			zone.lapDone = false;
-			cursorZone++; // 1周終わった。次の区域へ。
-			guard = data.zones.size() + 1;
+			cursorZone++; // 1周終わった。次の区域へ（1区域は1tickに最大1周）。
 		}
 	}
 

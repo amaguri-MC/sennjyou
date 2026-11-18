@@ -27,5 +27,6 @@
   "senjou.cmd.zones_entry": "・%s: クリア率 %s%%（残り %s ／ 最初 %s）[%s] (%s, %s, %s)〜(%s, %s, %s)",
   "senjou.cmd.zones_entry_busy": "・%s: 作業中 %s",
   "senjou.hud.clear_rate": "クリア率 %s%%",
+  "senjou.zone.not_loaded": "範囲に読み込まれていないチャンクがあります。近くに行ってからやり直してください",
   "item.senjou.pressure_washer": "高圧洗浄機"
 }

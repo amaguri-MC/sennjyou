@@ -37,6 +37,9 @@ public final class ZoneManager {
 		if (vol > ZoneMath.MAX_VOLUME) {
 			return Component.translatable("senjou.zone.too_big", vol, ZoneMath.MAX_VOLUME);
 		}
+		if (!level.hasChunksAt(min, max)) {
+			return Component.translatable("senjou.zone.not_loaded");
+		}
 		CleanZone zone = new CleanZone(name, level.dimension().identifier().toString(), min, max, 0, 0, false, java.util.List.of());
 		zone.busy = true;
 		data.zones.add(zone);
@@ -53,6 +56,9 @@ public final class ZoneManager {
 		}
 		if (zone.busy) {
 			return Component.translatable("senjou.zone.busy", zone.name);
+		}
+		if (!level.hasChunksAt(zone.min, zone.max)) {
+			return Component.translatable("senjou.zone.not_loaded");
 		}
 		zone.busy = true;
 		zone.initial = 0;
@@ -74,6 +80,9 @@ public final class ZoneManager {
 		if (zone.busy) {
 			return Component.translatable("senjou.zone.busy", zone.name);
 		}
+		if (!level.hasChunksAt(zone.min, zone.max)) {
+			return Component.translatable("senjou.zone.not_loaded");
+		}
 		zone.busy = true;
 		JOBS.add(new ZoneJob(level.dimension(), zone.min, zone.max, zone, false, requester, 0L,
 				z -> Component.translatable("senjou.zone.cleaned", zone.name),
@@ -86,6 +95,9 @@ public final class ZoneManager {
 		ServerLevel level = levelOf(server, zone);
 		if (zone.busy) {
 			return Component.translatable("senjou.zone.busy", zone.name);
+		}
+		if (level != null && !level.hasChunksAt(zone.min, zone.max)) {
+			return Component.translatable("senjou.zone.not_loaded");
 		}
 		ZoneData data = ZoneData.get(server);
 		data.zones.remove(zone);
