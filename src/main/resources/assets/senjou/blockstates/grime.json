@@ -1,0 +1,196 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "senjou:block/grime_1"
+      },
+      "when": {
+        "north": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_1",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_1",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_1",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_1",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_1",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "level": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2"
+      },
+      "when": {
+        "north": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_2",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "level": "2"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3"
+      },
+      "when": {
+        "north": "true",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "true",
+        "level": "3"
+      }
+    },
+    {
+      "apply": {
+        "model": "senjou:block/grime_3",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "true",
+        "level": "3"
+      }
+    }
+  ]
+}
