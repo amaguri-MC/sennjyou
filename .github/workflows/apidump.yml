@@ -16,7 +16,7 @@ jobs:
           java-version: '25'
           distribution: 'microsoft'
       - run: chmod +x ./gradlew
-      - run: for i in 1 2 3; do ./gradlew compileJava && exit 0; sleep 30; done; exit 1
+      - run: for i in 1 2 3; do ./gradlew help dependencies --configuration compileClasspath -q > /dev/null && exit 0; sleep 30; done; exit 1
         shell: bash
       - name: dump
         shell: bash
