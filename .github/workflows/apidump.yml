@@ -1,0 +1,50 @@
+name: apidump
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/apidump.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dump:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - run: chmod +x ./gradlew
+      - run: for i in 1 2 3; do ./gradlew compileJava && exit 0; sleep 30; done; exit 1
+        shell: bash
+      - name: dump
+        shell: bash
+        run: |
+          set -x
+          find ~/.gradle .gradle -name "*.jar" 2>/dev/null | grep -i -E "minecraft|fabric" | grep -v sources > jars.txt || true
+          cat jars.txt | head -100
+          mkdir -p out/mc out/fabric out/assets
+          MC=$(grep -E "minecraft-(merged|common|clientOnly|client)[^/]*\.jar$" jars.txt | head -5)
+          echo "$MC" > out/mcjars.txt
+          for J in $MC; do
+            unzip -Z1 "$J" | grep '\.class$' | grep -v '\$[0-9]' | sed 's/\.class$//' | tr / . > cls.txt
+            for P in $(sed 's/\.[^.]*$//' cls.txt | sort -u); do
+              grep "^$P\.[^.]*$" cls.txt > pc.txt
+              javap -cp "$J" -p $(cat pc.txt) >> "out/mc/$P.txt" 2>/dev/null || true
+            done
+            mkdir -p ex && (cd ex && unzip -q -o "$J" 'assets/minecraft/blockstates/*' 'assets/minecraft/models/*' 'assets/minecraft/items/*' 'data/minecraft/recipe/*' 'data/minecraft/tags/block/*' 2>/dev/null || true)
+          done
+          cp -r ex/* out/assets/ 2>/dev/null || true
+          for J in $(grep -i fabric jars.txt | grep -i -E "api|networking|rendering|command|event|item-group|registry|lifecycle|key-binding|attachment|object-builder|gametest|block" | sort -u); do
+            N=$(basename "$J" .jar)
+            unzip -Z1 "$J" | grep '\.class$' | grep '/api/' | sed 's/\.class$//' | tr / . > fc.txt
+            [ -s fc.txt ] && javap -cp "$J" -p $(cat fc.txt) > "out/fabric/$N.txt" 2>/dev/null || true
+          done
+          ls out/mc | wc -l; ls out/fabric | wc -l
+      - name: publish
+        shell: bash
+        run: |
+          cd out && git init -q -b apidump && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -q -m "apidump"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}" apidump

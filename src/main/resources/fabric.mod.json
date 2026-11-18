@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "senjou",
+	"version": "${version}",
+	"name": "Pressure Washer",
+	"description": "高圧洗浄機で汚れを落とすMod",
+	"authors": ["amaguri"],
+	"license": "All-Rights-Reserved",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["net.amaguri.senjou.SenjouMod"],
+		"client": ["net.amaguri.senjou.client.SenjouClient"]
+	},
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

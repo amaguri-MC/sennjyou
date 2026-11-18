@@ -1,0 +1,42 @@
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
+
+name: build
+on: [pull_request, push]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        # The Fabric maven sometimes serves broken asm POMs for a moment: retry instead of failing the build.
+        run: for i in 1 2 3; do ./gradlew build && exit 0; sleep 30; done; exit 1
+        shell: bash
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifacts
+          path: build/libs/
+      - name: publish jar to builds branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir out && cp build/libs/senjou-*[0-9].jar out/ && cd out
+          git init -q -b builds && git add -A
+          git -c user.name=ci -c user.email=ci@users.noreply.github.com commit -q -m "build ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}" builds
